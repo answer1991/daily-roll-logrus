@@ -1,6 +1,9 @@
 package drl
 
-import "testing"
+import (
+	"github.com/Sirupsen/logrus"
+	"testing"
+)
 
 func TestGetLogger(t *testing.T) {
 	logger := GetLogger("test-module")
@@ -9,5 +12,9 @@ func TestGetLogger(t *testing.T) {
 		t.Fail()
 	}
 
-	logger.Info("hello world")
+	SetLevel(logrus.InfoLevel)
+	SetEnableStdout(false)
+
+	logger.Info("hello")
+	logger.Debug("debug")
 }

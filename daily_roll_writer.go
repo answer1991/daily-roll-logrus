@@ -58,7 +58,7 @@ func (w *dailyRollWriter) initWriter() {
 
 	logFile := filepath.Join(logDir, fmt.Sprintf("%s-%s.log", w.prefixFileName, w.current))
 
-	log, err := os.OpenFile(logFile, os.O_APPEND|os.O_WRONLY|os.O_CREATE, os.ModePerm)
+	log, err := os.OpenFile(logFile, os.O_APPEND|os.O_WRONLY|os.O_CREATE, os.FileMode(0644))
 
 	if nil != err {
 		if os.IsNotExist(err) {
